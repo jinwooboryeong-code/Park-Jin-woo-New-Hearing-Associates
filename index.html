@@ -9,7 +9,7 @@
         :root { --main-blue: #00468c; --point-orange: #ff9800; --bg-light: #f4f7fa; --safe-green: #2e7d32; --warn-red: #d32f2f; }
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; padding: 0; color: #333; background-color: var(--bg-light); line-height: 1.5; -webkit-tap-highlight-color: transparent; }
         
-        /* 헤더 한글 명칭 고정 */
+        /* 헤더 */
         header { background: #fff; border-bottom: 2px solid var(--main-blue); padding: 15px 10px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .logo-text { font-size: 18px; font-weight: 800; color: var(--main-blue); letter-spacing: -0.5px; }
         
@@ -37,7 +37,7 @@
         #default-logo-view { width: 100%; margin-bottom: 15px; background: #fff; border-radius: 12px; padding: 20px; box-sizing: border-box; border: 1px solid #eee; text-align: center; }
         #default-logo-view img { width: 100%; height: auto; border-radius: 5px; }
 
-        /* 지점 상세 카드 (사진, 버튼) - 선택 시 나타남 */
+        /* 지점 상세 카드 */
         #store-detail-view { display: none; margin-top: 10px; }
         .store-card { background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; margin-bottom: 15px; border: 1px solid #eee; }
         .ceo-img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
@@ -47,7 +47,6 @@
         .btn-tel { background: var(--main-blue); }
         .btn-map { background: #2db400; }
 
-        /* 예약 폼 */
         .booking-section { background: #fff; border-radius: 12px; padding: 20px; border: 2px solid #eee; margin-bottom: 50px; }
         .booking-section h4 { margin: 0 0 15px 0; color: var(--main-blue); font-size: 17px; }
         .form-label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #666; }
@@ -76,46 +75,29 @@
         
         <div id="default-logo-view">
             <img src="제목을 입력해주세요. (5).jpg" alt="뉴히어링 로고">
-            <p style="font-size:13px; color:#888; margin-top:10px;">아래에서 상담 받으실 센터를 선택해 주세요.</p>
+            <p style="font-size:13px; color:#888; margin-top:10px;">상담 받으실 센터를 선택해 주세요.</p>
         </div>
 
-        <!-- 20개 지점 전체 목록 복구 -->
         <select class="input-style" id="store-selector" style="border:2px solid var(--main-blue); font-weight:800;" onchange="showStoreDetail()">
             <option value="">-- 센터를 선택하세요 --</option>
             <optgroup label="박진우 보청기 그룹 (직영)">
-                <option value="부여">부여본점</option>
-                <option value="논산">논산센터(논산독일보청기)</option>
-                <option value="보령">보령센터</option>
-                <option value="광주">광주센터</option>
-                <option value="익산">익산센터</option>
-                <option value="전주">전주센터</option>
-                <option value="군산">군산센터</option>
+                <option value="부여">부여본점</option><option value="논산">논산센터(논산독일보청기)</option><option value="보령">보령센터</option>
+                <option value="광주">광주센터</option><option value="익산">익산센터</option><option value="전주">전주센터</option><option value="군산">군산센터</option>
             </optgroup>
-            <optgroup label="뉴히어링 청각전문그룹 (연합 13개점)">
-                <option value="은평">서울 은평점</option>
-                <option value="강남">서울 강남점</option>
-                <option value="강동">서울 강동점</option>
-                <option value="강북">서울 강북점</option>
-                <option value="영등포">서울 영등포점</option>
-                <option value="동대문">서울 동대문점</option>
-                <option value="청주">충북 청주점</option>
-                <option value="부평">인천 부평점</option>
-                <option value="김포">경기 김포점</option>
-                <option value="고양">경기 고양점</option>
-                <option value="부천">경기 부천점</option>
-                <option value="군포">경기 군포점</option>
-                <option value="강릉">강원 강릉점</option>
+            <optgroup label="뉴히어링 청각전문그룹 (연합)">
+                <option value="은평">서울 은평점</option><option value="강남">서울 강남점</option><option value="강동">서울 강동점</option><option value="강북">서울 강북점</option>
+                <option value="영등포">서울 영등포점</option><option value="동대문">서울 동대문점</option><option value="청주">충북 청주점</option><option value="부평">인천 부평점</option>
+                <option value="김포">경기 김포점</option><option value="고양">경기 고양점</option><option value="부천">경기 부천점</option><option value="군포">경기 군포점</option><option value="강릉">강원 강릉점</option>
             </optgroup>
         </select>
 
-        <!-- 지점을 선택하면 아래 영역이 나타납니다 -->
         <div id="store-detail-view">
             <div class="store-card">
-                <img id="display-img" src="" class="ceo-img" alt="원장님 사진">
+                <img id="display-img" src="" class="ceo-img" alt="원장님">
                 <h4 id="display-name" style="margin:5px 0 15px 0; font-size:18px; color:var(--main-blue);"></h4>
                 <div class="btn-action-group">
                     <a href="" id="link-call" class="btn-tel">📞 전화 상담</a>
-                    <a href="" id="link-map" class="btn-map">📍 네이버 지도</a>
+                    <a href="" id="link-map" class="btn-map" target="_blank">📍 네이버 지도</a>
                 </div>
             </div>
 
@@ -130,6 +112,7 @@
                     <option value="종합 청력 검사">종합 청력 검사 및 분석</option>
                     <option value="보청기 신규 상담">보청기 구입/정부지원금</option>
                     <option value="보청기 조절/수리">보청기 점검 및 수리</option>
+                    <option value="이명/재활상담">이명 및 재활 상담</option>
                 </select>
                 <label class="form-label">희망 방문 일시</label>
                 <input type="text" id="uTime" class="input-style" placeholder="예: 평일 오전 11시">
@@ -149,24 +132,38 @@ const questions = [
     "특정 발음(ㅅ,ㅈ,ㅊ)이 뭉개져 들립니까?", "귀에서 이명 소리가 들립니까?", "대화 시 소외감을 느낍니까?", "엉뚱한 대답을 자주 합니까?"
 ];
 
+// 설문지 렌더링 (인덱스 부여)
 const qContainer = document.getElementById('q-container');
 questions.forEach((q, i) => {
-    qContainer.innerHTML += `<div class="survey-q"><span>${i+1}. ${q}</span><div class="survey-opts"><button onclick="mark(this, 1)">예</button><button onclick="mark(this, 0)">아니오</button></div></div>`;
+    qContainer.innerHTML += `<div class="survey-q"><span>${i+1}. ${q}</span><div class="survey-opts"><button onclick="mark(this, 1, ${i})">예</button><button onclick="mark(this, 0, ${i})">아니오</button></div></div>`;
 });
 
-function mark(btn, val) {
+// 버튼 클릭 시 세션에 저장 (뒤로가기 방어용)
+function mark(btn, val, index) {
     const btns = btn.parentElement.querySelectorAll('button');
     btns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     btn.setAttribute('data-val', val);
+
+    // 응답 저장
+    let answers = JSON.parse(sessionStorage.getItem('nh_answers') || '{}');
+    answers[index] = val;
+    sessionStorage.setItem('nh_answers', JSON.stringify(answers));
 }
 
-function calculateScore() {
+// 점수 계산 및 화면 렌더링
+function calculateScore(isRestore = false) {
     let score = 0;
     const selected = document.querySelectorAll('.survey-opts button.active');
-    if(selected.length < 10) { alert("모든 문항에 체크해 주세요."); return; }
+    
+    // 사용자가 직접 버튼을 눌렀을 때만 유효성 검사
+    if(!isRestore && selected.length < 10) { alert("모든 문항에 체크해 주세요."); return; }
+    
     selected.forEach(b => score += parseInt(b.getAttribute('data-val')));
     
+    // 점수 저장
+    sessionStorage.setItem('nh_score', score);
+
     document.getElementById('summary-result').style.display = 'block';
     const badge = document.getElementById('res-badge');
     const title = document.getElementById('res-count-title');
@@ -185,53 +182,56 @@ function calculateScore() {
         title.innerText = `분석 결과: ${score}개 항목 해당`;
         why.innerHTML = "<b>빠른 상담 필요:</b> 일상 대화에 어려움이 예상됩니다. 청력 교정을 통해 인지 건강을 지켜야 합니다.";
     }
+    
     document.getElementById('region-ui').style.display = 'block';
-    window.scrollTo({top: document.getElementById('summary-result').offsetTop - 70, behavior: 'smooth'});
+    if(!isRestore) {
+        window.scrollTo({top: document.getElementById('summary-result').offsetTop - 70, behavior: 'smooth'});
+    }
 }
 
-// 20개 지점 전체 데이터 및 네이버 플레이스 직접 연결(알려진 고유 ID 적용)
+// 📌 보내주신 파일에서 그대로 따온 네이버 지도 검색 주소!
 const storeData = {
-    "부여": { name: "부여본점 (박진우 원장)", img: "p_buyeo.jpg", tel: "0507-1336-4507", map: "https://m.place.naver.com/place/1553531121/home" },
-    "논산": { name: "논산센터 (박진우 원장)", img: "p_nonsan.jpg", tel: "0507-1309-3598", map: "https://m.place.naver.com/place/12863750/home" },
-    "보령": { name: "보령센터 (허재원 원장)", img: "p_boryeong.jpg", tel: "0507-1366-7849", map: "https://m.place.naver.com/place/1376916843/home" },
-    "광주": { name: "광주센터 (윤소희 원장)", img: "p_gwangju.jpg", tel: "0507-1351-4043", map: "https://m.place.naver.com/place/1321045763/home" },
-    "익산": { name: "익산센터 (고귀한 원장)", img: "p_iksan.jpg", tel: "0507-1376-7849", map: "https://m.place.naver.com/place/1360067341/home" },
-    "전주": { name: "전주센터 (김세연 원장)", img: "p_jeonju.jpg", tel: "010-0000-0000", map: "https://m.place.naver.com/place/1231362704/home" },
-    "군산": { name: "군산센터 (윤현식 원장)", img: "p_gunsan.jpg", tel: "010-0000-0000", map: "https://m.place.naver.com/place/1118128531/home" },
-    "은평": { name: "서울은평점 (황영훈 원장)", img: "n_eunpyeong.jpg", tel: "0507-1460-0352", map: "https://m.place.naver.com/place/1131109968/home" },
-    "강남": { name: "서울강남점", img: "n_gangnam.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링강남" },
-    "강동": { name: "서울강동점", img: "n_gangdong.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링강동" },
-    "강북": { name: "서울강북점", img: "n_gangbuk.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링강북" },
-    "영등포": { name: "서울영등포점", img: "n_yeongdeungpo.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링영등포" },
-    "동대문": { name: "서울동대문점", img: "n_dongdaemun.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링동대문" },
-    "청주": { name: "충북청주점", img: "n_cheongju.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링청주" },
-    "부평": { name: "인천부평점", img: "n_bupyeong.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링부평" },
-    "김포": { name: "경기김포점", img: "n_gimpo.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링김포" },
-    "고양": { name: "경기고양점", img: "n_goyang.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링고양" },
-    "부천": { name: "경기부천점", img: "n_bucheon.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링부천" },
-    "군포": { name: "경기군포점", img: "n_gunpo.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링군포" },
-    "강릉": { name: "강원강릉점", img: "n_gangneung.jpg", tel: "010-0000-0000", map: "https://m.map.naver.com/search2/search.naver?query=뉴히어링강릉" }
+    "부여": { name: "부여본점 (박진우 원장)", img: "p_buyeo.jpg", tel: "0507-1336-4507", map: "https://map.naver.com/v5/search/부여박진우보청기" },
+    "논산": { name: "논산센터 (박진우 원장)", img: "p_nonsan.jpg", tel: "0507-1309-3598", map: "https://map.naver.com/v5/search/논산독일보청기" },
+    "보령": { name: "보령센터 (허재원 원장)", img: "p_boryeong.jpg", tel: "0507-1366-7849", map: "https://map.naver.com/v5/search/보령박진우보청기" },
+    "광주": { name: "광주센터 (윤소희 원장)", img: "p_gwangju.jpg", tel: "0507-1351-4043", map: "https://map.naver.com/v5/search/박진우보청기 광주" },
+    "익산": { name: "익산센터 (고귀한 원장)", img: "p_iksan.jpg", tel: "0507-1376-7849", map: "https://map.naver.com/v5/search/익산박진우보청기" },
+    "전주": { name: "전주센터 (김세연 원장)", img: "p_jeonju.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/전주박진우보청기" },
+    "군산": { name: "군산센터 (윤현식 원장)", img: "p_gunsan.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/군산박진우보청기" },
+    "은평": { name: "서울은평점 (황영훈 원장)", img: "n_eunpyeong.jpg", tel: "0507-1460-0352", map: "https://map.naver.com/v5/search/뉴히어링 은평" },
+    "강남": { name: "서울강남점", img: "n_gangnam.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 강남" },
+    "강동": { name: "서울강동점", img: "n_gangdong.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 강동" },
+    "강북": { name: "서울강북점", img: "n_gangbuk.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 강북" },
+    "영등포": { name: "서울영등포점", img: "n_yeongdeungpo.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 영등포" },
+    "동대문": { name: "서울동대문점", img: "n_dongdaemun.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 동대문" },
+    "청주": { name: "충북청주점", img: "n_cheongju.jpg", tel: "010-0000-0000", map: "https://map.naver.com/search2/search.naver?query=뉴히어링 청주" },
+    "부평": { name: "인천부평점", img: "n_bupyeong.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 부평" },
+    "김포": { name: "경기김포점", img: "n_gimpo.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 김포" },
+    "고양": { name: "경기고양점", img: "n_goyang.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 고양" },
+    "부천": { name: "경기부천점", img: "n_bucheon.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 부천" },
+    "군포": { name: "경기군포점", img: "n_gunpo.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 군포" },
+    "강릉": { name: "강원강릉점", img: "n_gangneung.jpg", tel: "010-0000-0000", map: "https://map.naver.com/v5/search/뉴히어링 강릉" }
 };
 
 function showStoreDetail() {
     const key = document.getElementById('store-selector').value;
     
-    // 지점을 선택하지 않았을 때 (기본 상태)
+    // 지점 선택 저장 (뒤로가기 시 유지)
+    sessionStorage.setItem('nh_store', key);
+
     if(!key) { 
         document.getElementById('default-logo-view').style.display='block'; 
         document.getElementById('store-detail-view').style.display='none'; 
         return; 
     }
-    
-    // 지점을 선택했을 때: 데이터 매핑 후 사진, 지도, 예약 영역 노출!
     const s = storeData[key];
     document.getElementById('display-img').src = s.img;
     document.getElementById('display-name').innerText = s.name;
     document.getElementById('link-call').href = "tel:" + s.tel;
-    document.getElementById('link-map').href = s.map; 
+    document.getElementById('link-map').href = s.map;
     
-    document.getElementById('default-logo-view').style.display = 'none'; // 기본 로고 숨김
-    document.getElementById('store-detail-view').style.display = 'block'; // 상세 정보 노출
+    document.getElementById('default-logo-view').style.display = 'none';
+    document.getElementById('store-detail-view').style.display = 'block';
 }
 
 function submitBooking() {
@@ -239,10 +239,41 @@ function submitBooking() {
     const phone = document.getElementById('uPhone').value;
     const store = document.getElementById('store-selector').value;
     if(!name || !phone || !store || !document.getElementById('uAgree').checked) { alert("모든 항목을 입력하고 동의해 주세요."); return; }
-    
-    const msg = `[예약접수]\n지점: ${store}\n성함: ${name}\n연락처: ${phone}\n내용: ${document.getElementById('uContent').value}\n희망시간: ${document.getElementById('uTime').value}`;
-    window.location.href = `sms:050713364507?body=${encodeURIComponent(msg)}`;
+    const msg = `[예약접수]\n지점: ${store}\n성함: ${name}\n연락처: ${phone}\n내용: ${document.getElementById('uContent').value}\n시간: ${document.getElementById('uTime').value}`;
+    window.location.href = `sms:01072764507?body=${encodeURIComponent(msg)}`;
 }
+
+// 📌 뒤로가기 시 화면 초기화 방지 로직 📌
+window.addEventListener('pageshow', function() {
+    // 1. 체크했던 설문 응답 복원
+    let answers = JSON.parse(sessionStorage.getItem('nh_answers') || '{}');
+    Object.keys(answers).forEach(index => {
+        const qDiv = document.querySelectorAll('.survey-q')[index];
+        if(qDiv) {
+            const btns = qDiv.querySelectorAll('button');
+            btns.forEach(b => b.classList.remove('active'));
+            if(answers[index] == 1) { 
+                btns[0].classList.add('active'); btns[0].setAttribute('data-val', 1); 
+            } else { 
+                btns[1].classList.add('active'); btns[1].setAttribute('data-val', 0); 
+            }
+        }
+    });
+
+    // 2. 점수 결과창 복원
+    const savedScore = sessionStorage.getItem('nh_score');
+    if(savedScore !== null) {
+        // 이미 버튼 10개가 채워진 상태로 복원되었기 때문에 true 파라미터로 계산 재실행
+        calculateScore(true); 
+    }
+
+    // 3. 선택했던 지점 복원
+    const savedStore = sessionStorage.getItem('nh_store');
+    if(savedStore) {
+        document.getElementById('store-selector').value = savedStore;
+        showStoreDetail();
+    }
+});
 </script>
 </body>
 </html>
