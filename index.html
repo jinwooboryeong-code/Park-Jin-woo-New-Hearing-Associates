@@ -9,19 +9,16 @@
         :root { --main-blue: #00468c; --point-orange: #ff9800; --bg-light: #f4f7fa; --safe-green: #2e7d32; --warn-red: #d32f2f; }
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; padding: 0; color: #333; background-color: var(--bg-light); line-height: 1.5; -webkit-tap-highlight-color: transparent; }
         
-        /* 헤더 */
         header { background: #fff; border-bottom: 2px solid var(--main-blue); padding: 15px 10px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .logo-text { font-size: 18px; font-weight: 800; color: var(--main-blue); letter-spacing: -0.5px; }
         
         .container { padding: 15px; max-width: 500px; margin: 0 auto; box-sizing: border-box; }
         
-        /* 결과 리포트 박스 */
         #summary-result { display: none; background: #fff; border: 3px solid var(--main-blue); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .res-badge { display: inline-block; padding: 6px 15px; border-radius: 20px; color: #fff; font-size: 13px; font-weight: 800; margin-bottom: 12px; }
         .summary-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .why-consult { background: #f9f9f9; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px; color: #444; line-height: 1.7; word-break: keep-all; }
 
-        /* 설문지 영역 */
         .survey-section { background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .survey-q { margin-bottom: 10px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8f8f8; padding-bottom: 10px; }
         .survey-q span { flex: 1; padding-right: 10px; }
@@ -29,15 +26,12 @@
         .survey-opts button { padding: 10px 15px; border: 1px solid #ddd; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; min-width: 55px; }
         .survey-opts button.active { background: var(--main-blue); color: #fff; border-color: var(--main-blue); }
 
-        /* 예약 및 센터 정보 */
         #region-ui { display: none; margin-top: 20px; }
         .input-style { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; font-size: 15px; margin-bottom: 12px; background:#fff; appearance: none; }
         
-        /* 초기 로고 이미지 박스 */
         #default-logo-view { width: 100%; margin-bottom: 15px; background: #fff; border-radius: 12px; padding: 20px; box-sizing: border-box; border: 1px solid #eee; text-align: center; }
         #default-logo-view img { width: 100%; height: auto; border-radius: 5px; }
 
-        /* 지점 상세 카드 */
         #store-detail-view { display: none; margin-top: 10px; }
         .store-card { background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; margin-bottom: 15px; border: 1px solid #eee; }
         .ceo-img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
@@ -50,6 +44,11 @@
         .booking-section { background: #fff; border-radius: 12px; padding: 20px; border: 2px solid #eee; margin-bottom: 50px; }
         .booking-section h4 { margin: 0 0 15px 0; color: var(--main-blue); font-size: 17px; }
         .form-label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #666; }
+        
+        /* 날짜/시간 나란히 배치 */
+        .datetime-group { display: flex; gap: 8px; }
+        .datetime-group input { flex: 1; }
+
         .btn-submit { width: 100%; padding: 18px; background: var(--point-orange); color: #fff; border: none; border-radius: 8px; font-size: 17px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 0 #e68a00; -webkit-appearance: none; }
     </style>
 </head>
@@ -105,17 +104,36 @@
                 <h4>상담 예약 신청</h4>
                 <label class="form-label">방문자 성함</label>
                 <input type="text" id="uName" class="input-style" placeholder="성함">
+                
+                <label class="form-label">연령대 선택</label>
+                <select id="uAge" class="input-style">
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대">50대</option>
+                    <option value="60대">60대</option>
+                    <option value="70대" selected>70대</option>
+                    <option value="80대">80대</option>
+                    <option value="90세 이상">90세 이상</option>
+                </select>
+
                 <label class="form-label">연락처</label>
                 <input type="tel" id="uPhone" class="input-style" placeholder="010-0000-0000">
+                
                 <label class="form-label">상담 내용</label>
                 <select id="uContent" class="input-style">
                     <option value="종합 청력 검사">종합 청력 검사 및 분석</option>
                     <option value="보청기 신규 상담">보청기 구입/정부지원금</option>
                     <option value="보청기 조절/수리">보청기 점검 및 수리</option>
-                    <option value="이명/재활상담">이명 및 재활 상담</option>
                 </select>
+
                 <label class="form-label">희망 방문 일시</label>
-                <input type="text" id="uTime" class="input-style" placeholder="예: 평일 오전 11시">
+                <div class="datetime-group">
+                    <input type="date" id="uDate" class="input-style">
+                    <input type="time" id="uTime" class="input-style">
+                </div>
+
                 <div style="background:#f0f0f0; padding:10px; border-radius:6px; margin-bottom:15px; font-size:12px;">
                     <label><input type="checkbox" id="uAgree"> 개인정보 수집 동의 (필수)</label>
                 </div>
@@ -132,43 +150,31 @@ const questions = [
     "특정 발음(ㅅ,ㅈ,ㅊ)이 뭉개져 들립니까?", "귀에서 이명 소리가 들립니까?", "대화 시 소외감을 느낍니까?", "엉뚱한 대답을 자주 합니까?"
 ];
 
-// 설문지 렌더링 (인덱스 부여)
 const qContainer = document.getElementById('q-container');
 questions.forEach((q, i) => {
     qContainer.innerHTML += `<div class="survey-q"><span>${i+1}. ${q}</span><div class="survey-opts"><button onclick="mark(this, 1, ${i})">예</button><button onclick="mark(this, 0, ${i})">아니오</button></div></div>`;
 });
 
-// 버튼 클릭 시 세션에 저장 (뒤로가기 방어용)
 function mark(btn, val, index) {
     const btns = btn.parentElement.querySelectorAll('button');
     btns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     btn.setAttribute('data-val', val);
-
-    // 응답 저장
     let answers = JSON.parse(sessionStorage.getItem('nh_answers') || '{}');
     answers[index] = val;
     sessionStorage.setItem('nh_answers', JSON.stringify(answers));
 }
 
-// 점수 계산 및 화면 렌더링
 function calculateScore(isRestore = false) {
     let score = 0;
     const selected = document.querySelectorAll('.survey-opts button.active');
-    
-    // 사용자가 직접 버튼을 눌렀을 때만 유효성 검사
     if(!isRestore && selected.length < 10) { alert("모든 문항에 체크해 주세요."); return; }
-    
     selected.forEach(b => score += parseInt(b.getAttribute('data-val')));
-    
-    // 점수 저장
     sessionStorage.setItem('nh_score', score);
-
     document.getElementById('summary-result').style.display = 'block';
     const badge = document.getElementById('res-badge');
     const title = document.getElementById('res-count-title');
     const why = document.getElementById('res-why-msg');
-
     if(score <= 2) {
         badge.innerText = "청력 정상"; badge.style.background = "#2e7d32";
         title.innerText = `분석 결과: ${score}개 항목 해당`;
@@ -182,14 +188,10 @@ function calculateScore(isRestore = false) {
         title.innerText = `분석 결과: ${score}개 항목 해당`;
         why.innerHTML = "<b>빠른 상담 필요:</b> 일상 대화에 어려움이 예상됩니다. 청력 교정을 통해 인지 건강을 지켜야 합니다.";
     }
-    
     document.getElementById('region-ui').style.display = 'block';
-    if(!isRestore) {
-        window.scrollTo({top: document.getElementById('summary-result').offsetTop - 70, behavior: 'smooth'});
-    }
+    if(!isRestore) window.scrollTo({top: document.getElementById('summary-result').offsetTop - 70, behavior: 'smooth'});
 }
 
-// 📌 보내주신 파일에서 그대로 따온 네이버 지도 검색 주소!
 const storeData = {
     "부여": { name: "부여본점 (박진우 원장)", img: "p_buyeo.jpg", tel: "0507-1336-4507", map: "https://map.naver.com/v5/search/부여박진우보청기" },
     "논산": { name: "논산센터 (박진우 원장)", img: "p_nonsan.jpg", tel: "0507-1309-3598", map: "https://map.naver.com/v5/search/논산독일보청기" },
@@ -215,10 +217,7 @@ const storeData = {
 
 function showStoreDetail() {
     const key = document.getElementById('store-selector').value;
-    
-    // 지점 선택 저장 (뒤로가기 시 유지)
     sessionStorage.setItem('nh_store', key);
-
     if(!key) { 
         document.getElementById('default-logo-view').style.display='block'; 
         document.getElementById('store-detail-view').style.display='none'; 
@@ -229,45 +228,39 @@ function showStoreDetail() {
     document.getElementById('display-name').innerText = s.name;
     document.getElementById('link-call').href = "tel:" + s.tel;
     document.getElementById('link-map').href = s.map;
-    
     document.getElementById('default-logo-view').style.display = 'none';
     document.getElementById('store-detail-view').style.display = 'block';
 }
 
 function submitBooking() {
     const name = document.getElementById('uName').value;
+    const age = document.getElementById('uAge').value;
     const phone = document.getElementById('uPhone').value;
+    const date = document.getElementById('uDate').value;
+    const time = document.getElementById('uTime').value;
     const store = document.getElementById('store-selector').value;
-    if(!name || !phone || !store || !document.getElementById('uAgree').checked) { alert("모든 항목을 입력하고 동의해 주세요."); return; }
-    const msg = `[예약접수]\n지점: ${store}\n성함: ${name}\n연락처: ${phone}\n내용: ${document.getElementById('uContent').value}\n시간: ${document.getElementById('uTime').value}`;
+    
+    if(!name || !phone || !date || !time || !store || !document.getElementById('uAgree').checked) { 
+        alert("모든 예약 정보와 개인정보 동의를 확인해 주세요."); return; 
+    }
+    
+    const msg = `[예약접수]\n지점: ${store}\n성함: ${name}\n연령: ${age}\n연락처: ${phone}\n내용: ${document.getElementById('uContent').value}\n일시: ${date} ${time}`;
     window.location.href = `sms:01072764507?body=${encodeURIComponent(msg)}`;
 }
 
-// 📌 뒤로가기 시 화면 초기화 방지 로직 📌
 window.addEventListener('pageshow', function() {
-    // 1. 체크했던 설문 응답 복원
     let answers = JSON.parse(sessionStorage.getItem('nh_answers') || '{}');
     Object.keys(answers).forEach(index => {
         const qDiv = document.querySelectorAll('.survey-q')[index];
         if(qDiv) {
             const btns = qDiv.querySelectorAll('button');
             btns.forEach(b => b.classList.remove('active'));
-            if(answers[index] == 1) { 
-                btns[0].classList.add('active'); btns[0].setAttribute('data-val', 1); 
-            } else { 
-                btns[1].classList.add('active'); btns[1].setAttribute('data-val', 0); 
-            }
+            if(answers[index] == 1) { btns[0].classList.add('active'); btns[0].setAttribute('data-val', 1); }
+            else { btns[1].classList.add('active'); btns[1].setAttribute('data-val', 0); }
         }
     });
-
-    // 2. 점수 결과창 복원
     const savedScore = sessionStorage.getItem('nh_score');
-    if(savedScore !== null) {
-        // 이미 버튼 10개가 채워진 상태로 복원되었기 때문에 true 파라미터로 계산 재실행
-        calculateScore(true); 
-    }
-
-    // 3. 선택했던 지점 복원
+    if(savedScore !== null) calculateScore(true); 
     const savedStore = sessionStorage.getItem('nh_store');
     if(savedStore) {
         document.getElementById('store-selector').value = savedStore;
