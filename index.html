@@ -45,7 +45,6 @@
         .booking-section h4 { margin: 0 0 15px 0; color: var(--main-blue); font-size: 17px; }
         .form-label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #666; }
         
-        /* 날짜/시간 나란히 배치 */
         .datetime-group { display: flex; gap: 8px; }
         .datetime-group input { flex: 1; }
 
@@ -107,15 +106,9 @@
                 
                 <label class="form-label">연령대 선택</label>
                 <select id="uAge" class="input-style">
-                    <option value="10대">10대</option>
-                    <option value="20대">20대</option>
-                    <option value="30대">30대</option>
-                    <option value="40대">40대</option>
-                    <option value="50대">50대</option>
-                    <option value="60대">60대</option>
-                    <option value="70대" selected>70대</option>
-                    <option value="80대">80대</option>
-                    <option value="90세 이상">90세 이상</option>
+                    <option value="10대">10대</option><option value="20대">20대</option><option value="30대">30대</option>
+                    <option value="40대">40대</option><option value="50대">50대</option><option value="60대">60대</option>
+                    <option value="70대" selected>70대</option><option value="80대">80대</option><option value="90세 이상">90세 이상</option>
                 </select>
 
                 <label class="form-label">연락처</label>
@@ -245,7 +238,8 @@ function submitBooking() {
     }
     
     const msg = `[예약접수]\n지점: ${store}\n성함: ${name}\n연령: ${age}\n연락처: ${phone}\n내용: ${document.getElementById('uContent').value}\n일시: ${date} ${time}`;
-    window.location.href = `sms:01072764507?body=${encodeURIComponent(msg)}`;
+    // 요청하신 번호 010-7277-4507로 수정 완료
+    window.location.href = `sms:01072774507?body=${encodeURIComponent(msg)}`;
 }
 
 window.addEventListener('pageshow', function() {
